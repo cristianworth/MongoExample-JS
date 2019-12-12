@@ -7,10 +7,12 @@ MongoClient.connect(url, {
 }, function (err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  var myobj = { name: "Company Inc", address: "Highway 37" };
-  dbo.collection("customers").insertOne(myobj, function (err, res) {
+
+  var query = { address: "Orlando 293" };
+
+  dbo.collection("customers").find(query).toArray(function (err, result) {
     if (err) throw err;
-    console.log("1 document inserted");
+    console.log(result);
     db.close();
   });
 });

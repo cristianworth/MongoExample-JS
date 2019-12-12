@@ -7,8 +7,11 @@ MongoClient.connect(url, {
 }, function (err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  var query = { address: "Park Lane 38" };
-  dbo.collection("customers").find(query).toArray(function (err, result) {
+  
+  var mysort = { name: -1 };
+  //where 1 is ascending and -1 is descending.
+
+  dbo.collection("customers").find().sort(mysort).toArray(function (err, result) {
     if (err) throw err;
     console.log(result);
     db.close();
