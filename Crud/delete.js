@@ -9,7 +9,7 @@ MongoClient.connect(url, {
   var dbo = db.db("mydb");
 
 
-  var myquery = { address: 'tx' };
+  var myquery = { address: 'Rua Oswaldo Siqueira' };
 
 
   dbo.collection("customers").deleteOne(myquery, function (err, obj) {

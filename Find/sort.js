@@ -8,7 +8,7 @@ MongoClient.connect(url, {
   if (err) throw err;
   var dbo = db.db("mydb");
   
-  var mysort = { name: -1 };
+  var mysort = { name: 1 };
   //where 1 is ascending and -1 is descending.
 
   dbo.collection("customers").find().sort(mysort).toArray(function (err, result) {

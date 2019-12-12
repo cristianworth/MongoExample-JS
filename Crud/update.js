@@ -9,7 +9,7 @@ MongoClient.connect(url, {
   var dbo = db.db("mydb");
 
 
-  var myquery = { name: "Mickey" };
+  var myquery = { name: "Oficina do Bolinha" };
   var newvalues = { $set: { name: "Disney", address: "Orlando 293" } };
 
 

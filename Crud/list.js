@@ -8,7 +8,7 @@ MongoClient.connect(url, {
   if (err) throw err;
   var dbo = db.db("mydb");
 
-  var query = { address: "Orlando 293" };
+  var query = { address: "Rua Oswaldo Siqueira" };
 
   dbo.collection("customers").find(query).toArray(function (err, result) {
     if (err) throw err;
