@@ -7,11 +7,19 @@ MongoClient.connect(url, {
 }, function (err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  var myquery = { address: "Valley 345" };
-  var newvalues = { $set: { name: "Mickey", address: "Canyon 123" } };
-  dbo.collection("customers").updateOne(myquery, newvalues, function (err, res) {
+  dbo.collection('orders').aggregate([
+    {
+      $lookup:
+      {
+        from: 'products',
+        localField: 'product_id',
+        foreignField: '_id',
+        as: 'orderdetails'
+      }
+    }
+  ]).toArray(function (err, res) {
     if (err) throw err;
-    console.log("1 document updated");
+    console.log(JSON.stringify(res));
     db.close();
   });
 });
